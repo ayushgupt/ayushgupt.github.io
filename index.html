@@ -64,8 +64,9 @@ function validateForm()
 
     var pile_total_var = document.forms["myForm"]["pile_total"].value;
     var pile_executed_var = document.forms["myForm"]["pile_executed"].value;
-    var pile_progress_pm_var = document.forms["myForm"]["pile_progress_pm"].value;
-    var pile_months_needed_var = (pile_total_var - pile_executed_var)/pile_progress_pm_var;
+    var pile_rig_number_var = document.forms["myForm"]["pile_rig_number"].value;
+    var pile_rig_progress_pm_var = document.forms["myForm"]["pile_rig_progress_pm"].value;
+    var pile_months_needed_var = (pile_total_var - pile_executed_var)/(pile_rig_progress_pm_var*pile_rig_number_var);
 
 
     var piers_total_var = document.forms["myForm"]["piers_total"].value;
@@ -113,27 +114,105 @@ function validateForm()
     }
     else
     {
-    	// alert("Months more needed for pile caps are : "+pile_caps_months_needed_var+"\n"+
-    	// 	"Months more needed for pile are : "+pile_months_needed_var+"\n"+
-    	// 	"Practical Months more needed for piers are : "+piers_months_needed_practical_var+"\n"+
-    	// 	"Theortical Months more needed for piers are : "+piers_months_needed_theortical_var+"\n"+
-    	// 	"Practical Months more needed for Segments are : "+segments_months_needed_practical_var+"\n"+
-    	// 	"Theortical Months more needed for Segments are : "+segments_months_needed_theortical_var);
-		// show_results();
-		// alert('Done');
-		document.getElementById('results').setAttribute("style","display:block");
-    	// alert('3');
+      if(pile_caps_months_needed_var<(pile_months_needed_var+1))
+      {
+        pile_caps_months_needed_var=(pile_months_needed_var+1);
+      }
+      
+      if(piers_months_needed_practical_var<(pile_caps_months_needed_var+1))
+      {
+        piers_months_needed_practical_var=(pile_caps_months_needed_var+1);
+      }
+
+      var substructure_months_needed_var=piers_months_needed_practical_var;
+
+      if(date_of_completion_of_launching<(segments_months_needed_practical_var+1.5))
+      {
+        date_of_completion_of_launching=(segments_months_needed_practical_var+1.5);
+      }
+
+      var date_of_completion_of_project=date_of_completion_of_launching;
+      // alert("date_of_completion_of_project is initialized to be "+ date_of_completion_of_launching
+        // +"At this time Substructure completion is"+substructure_months_needed_show)
+
+      if(date_of_completion_of_project<(substructure_months_needed_var+1))
+      {
+        // alert("date of completion is less"+date_of_completion_of_project+" "+ substructure_months_needed_show);
+        date_of_completion_of_project=(substructure_months_needed_var+1);
+      }
+
+    	alert("Months more needed for pile caps are : "+pile_caps_months_needed_var+"\n"+
+    		"Months more needed for pile are : "+pile_months_needed_var+"\n"+
+    		"Practical Months more needed for piers are : "+piers_months_needed_practical_var+"\n"+
+    		"Theortical Months more needed for piers are : "+piers_months_needed_theortical_var+"\n"+
+    		"Practical Months more needed for Segments are : "+segments_months_needed_practical_var+"\n"+
+    		"Theortical Months more needed for Segments are : "+segments_months_needed_theortical_var);
+
+  		document.getElementById('results').setAttribute("style","display:block");
     	document.getElementById('initial_headline').setAttribute("style","display:None");
-    	// alert('1');
-		document.getElementById('initial_form').setAttribute("style","display:None");
-		// alert('2');
-    	document.getElementById("pile_months_needed_show").innerHTML = pile_months_needed_var+'months';
-    	document.getElementById("piers_months_needed_show").innerHTML = piers_months_needed_practical_var+'months';
-    	document.getElementById("substructure_months_needed_show").innerHTML = piers_months_needed_practical_var+'months';
-    	document.getElementById("segments_months_needed_show").innerHTML = segments_months_needed_practical_var+'months';
-    	document.getElementById("project_months_needed_show").innerHTML = date_of_completion_of_launching+'months';
-    	document.getElementById("launching_months_needed_show").innerHTML = date_of_completion_of_launching+'months';
-    	document.getElementById("pile_caps_months_needed_show").innerHTML = pile_months_needed_var+'months';
+		  document.getElementById('initial_form').setAttribute("style","display:None");
+
+    var date = new Date();
+    var datetoprint_pile_months_needed_var=new Date(date.setTime( date.getTime() + pile_months_needed_var *30 * 86400000 ));
+
+    var date = new Date();
+    var datetoprint_pile_caps_months_needed_var=new Date(date.setTime( date.getTime() + pile_caps_months_needed_var *30 * 86400000 ));
+    
+    var date = new Date();
+    var datetoprint_piers_months_needed_practical_var=new Date(date.setTime( date.getTime() + piers_months_needed_practical_var *30 * 86400000 ));
+    
+    var date = new Date();
+    var datetoprint_substructure_months_needed_var=new Date(date.setTime( date.getTime() + substructure_months_needed_var *30 * 86400000 ));
+    
+    var date = new Date();
+    var datetoprint_segments_months_needed_practical_var=new Date(date.setTime( date.getTime() + segments_months_needed_practical_var *30 * 86400000 ));
+    
+    var date = new Date();
+    var datetoprint_date_of_completion_of_launching=new Date(date.setTime( date.getTime() + date_of_completion_of_launching *30 * 86400000 ));
+    
+    var date = new Date();
+    var datetoprint_date_of_completion_of_project=new Date(date.setTime( date.getTime() + date_of_completion_of_project *30 * 86400000 ));
+
+
+
+    var monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+
+
+      document.getElementById("pile_months_needed_show").innerHTML = datetoprint_pile_months_needed_var.getDate()+' '+monthNames[datetoprint_pile_months_needed_var.getMonth()]+' '+datetoprint_pile_months_needed_var.getFullYear();
+      
+      document.getElementById("pile_caps_months_needed_show").innerHTML = datetoprint_pile_caps_months_needed_var.getDate()+' '+
+        monthNames[datetoprint_pile_caps_months_needed_var.getMonth()]+' '+
+        datetoprint_pile_caps_months_needed_var.getFullYear();
+
+      document.getElementById("piers_months_needed_show").innerHTML = datetoprint_piers_months_needed_practical_var.getDate()+' '+monthNames[datetoprint_piers_months_needed_practical_var.getMonth()]+' '+datetoprint_piers_months_needed_practical_var.getFullYear();
+      
+      document.getElementById("substructure_months_needed_show").innerHTML = datetoprint_substructure_months_needed_var.getDate()+' '+
+        monthNames[datetoprint_substructure_months_needed_var.getMonth()]+' '+
+        datetoprint_substructure_months_needed_var.getFullYear();
+      
+      document.getElementById("segments_months_needed_show").innerHTML = datetoprint_segments_months_needed_practical_var.getDate()+' '+
+        monthNames[datetoprint_segments_months_needed_practical_var.getMonth()]+' '+
+        datetoprint_segments_months_needed_practical_var.getFullYear();
+      
+      document.getElementById("launching_months_needed_show").innerHTML = datetoprint_date_of_completion_of_launching.getDate()+' '+
+        monthNames[datetoprint_date_of_completion_of_launching.getMonth()]+' '+
+        datetoprint_date_of_completion_of_launching.getFullYear();
+
+      document.getElementById("project_months_needed_show").innerHTML = datetoprint_date_of_completion_of_project.getDate()+' '+
+        monthNames[datetoprint_date_of_completion_of_project.getMonth()]+' '+
+        datetoprint_date_of_completion_of_project.getFullYear();
+
+
+
+
+
+    	// document.getElementById("pile_months_needed_show").innerHTML = pile_months_needed_var+'months';
+    	// document.getElementById("piers_months_needed_show").innerHTML = piers_months_needed_practical_var+'months';
+    	// document.getElementById("substructure_months_needed_show").innerHTML = piers_months_needed_practical_var+'months';
+    	// document.getElementById("segments_months_needed_show").innerHTML = segments_months_needed_practical_var+'months';
+    	// document.getElementById("project_months_needed_show").innerHTML = date_of_completion_of_launching+'months';
+    	// document.getElementById("launching_months_needed_show").innerHTML = date_of_completion_of_launching+'months';
+    	// document.getElementById("pile_caps_months_needed_show").innerHTML = pile_months_needed_var+'months';
     	// alert('4');
 		return false;
 
@@ -216,8 +295,13 @@ Expected Progress of Pile Caps Per Month: <input type=number step=any name="pile
 </div>
 
 <div class="form-group" >
-      <label >Expected Progress of Pile Per Month:</label>
-      <input type=number step=any name="pile_progress_pm" class="form-control">
+      <label >Expected Progress of Pile Rigs Per Month:</label>
+      <input type=number step=any name="pile_rig_progress_pm" class="form-control">
+</div>
+
+<div class="form-group" >
+      <label >Number of Rigs:</label>
+      <input type=number step=any name="pile_rig_number" class="form-control">
 </div>
 
 <!-- 
@@ -333,19 +417,19 @@ Number of Launching Girdles: <input type=number step=any name="number_of_launchi
  <center>
     <h1>Completion Estimate is Here!!</h1>
     <h3>
-    Completion of Piles will happen in <p id="pile_months_needed_show"></p>
+    Completion of Piles will happen around <p id="pile_months_needed_show"></p>
     <br>
-    Completion of Piles Caps will happen in <p id="pile_caps_months_needed_show"></p>
+    Completion of Piles Caps will happen around <p id="pile_caps_months_needed_show"></p>
     <br>
-    Completion of Piers will happen in <p id="piers_months_needed_show"></p>
+    Completion of Piers will happen around <p id="piers_months_needed_show"></p>
     <br>
-    Completion of Substructure will happen in <p id="substructure_months_needed_show"></p>
+    Completion of Substructure will happen around <p id="substructure_months_needed_show"></p>
     <br>
-    Completion of Segment Casting will happen in <p id="segments_months_needed_show"></p>
+    Completion of Segment Casting will happen around <p id="segments_months_needed_show"></p>
     <br>
-    Launching will happen in <p id="launching_months_needed_show"></p>
+    Launching will happen around <p id="launching_months_needed_show"></p>
     <br>
-    Project will complete in <p id="project_months_needed_show"></p>
+    Project will complete around <p id="project_months_needed_show"></p>
     <br>
     </h3>
  </center>
