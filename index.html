@@ -1,440 +1,80 @@
 <!DOCTYPE html>
-<html>
-<head>
-<script type="text/javascript">
-
-function Run_on_start() 
-{
-	// alert('This Ran');
-	document.getElementsByClassName('myForm_class')[0].setAttribute("style","margin-left: 10%");
-	var elms = document.getElementsByClassName('form-control')
-	for (var i = 0; i < elms.length; i++) 
-	{
-	  elms[i].setAttribute("style","width:90%");
-	  // elms[i].setAttribute("style","width:50%");
-	}
-	document.getElementById('results').setAttribute("style","display:None");
-	// document.getElementsByClassName('form-control').setAttribute("style","width:100px");	
-}
-
-// window.onload = function(){
-// 	Run_on_start();
-// };
-
-	var pile_caps_total_var;
-    var pile_caps_executed_var ;
-    var pile_caps_progress_pm_var;
-    var pile_caps_months_needed_var;
 
 
-    var pile_total_var ;
-    var pile_executed_var;
-    var pile_progress_pm_var ;
-    var pile_months_needed_var ;
-
-
-    var piers_total_var ;
-    var piers_executed_var ;
-    var piers_progress_pm_var;
-    var piers_shutter_var ;
-	var piers_months_needed_practical_var;
-	var piers_months_needed_theortical_var ;
-
-	var segments_total_var ;
-    var segments_casted_var ;
-    var segments_progress_pm_var;
-    var segments_casting_beds_var ;
-	var segments_months_needed_practical_var;
-	var segments_months_needed_theortical_var ;
-
-	var spans_total_var ;
-	var spans_already_casted_var ;
-	var number_of_gls_units_var;
-	var number_of_launching_girdles_var;
-	var date_of_completion_of_launching ;
-
-
-function validateForm() 
-{
-    var pile_caps_total_var = document.forms["myForm"]["pile_caps_total"].value;
-    var pile_caps_executed_var = document.forms["myForm"]["pile_caps_executed"].value;
-    var pile_caps_progress_pm_var = document.forms["myForm"]["pile_caps_progress_pm"].value;
-    var pile_caps_months_needed_var = (pile_caps_total_var - pile_caps_executed_var)/pile_caps_progress_pm_var;
-
-
-    var pile_total_var = document.forms["myForm"]["pile_total"].value;
-    var pile_executed_var = document.forms["myForm"]["pile_executed"].value;
-    var pile_rig_number_var = document.forms["myForm"]["pile_rig_number"].value;
-    var pile_rig_progress_pm_var = document.forms["myForm"]["pile_rig_progress_pm"].value;
-    var pile_months_needed_var = (pile_total_var - pile_executed_var)/(pile_rig_progress_pm_var*pile_rig_number_var);
-
-
-    var piers_total_var = document.forms["myForm"]["piers_total"].value;
-    var piers_executed_var = document.forms["myForm"]["piers_executed"].value;
-    var piers_progress_pm_var = document.forms["myForm"]["piers_progress_pm"].value;
-    var piers_shutter_var = document.forms["myForm"]["piers_shutter"].value;
-	var piers_months_needed_practical_var = (piers_total_var - piers_executed_var)/piers_progress_pm_var;
-	var piers_months_needed_theortical_var = (piers_total_var - piers_executed_var)/(3*piers_shutter_var);
-
-	var segments_total_var = document.forms["myForm"]["segments_total"].value;
-    var segments_casted_var = document.forms["myForm"]["segments_casted"].value;
-    var segments_progress_pm_var = document.forms["myForm"]["segments_progress_pm"].value;
-    var segments_casting_beds_var = document.forms["myForm"]["segments_casting_beds"].value;
-	var segments_months_needed_practical_var = (segments_total_var - segments_casted_var)/segments_progress_pm_var;
-	var segments_months_needed_theortical_var = (segments_total_var - segments_casted_var)/(30*segments_casting_beds_var);
-
-	var spans_total_var = document.forms["myForm"]["spans_total"].value;
-	var spans_already_casted_var = document.forms["myForm"]["spans_already_casted"].value;
-	var number_of_gls_units_var = document.forms["myForm"]["number_of_gls_units"].value;
-	var number_of_launching_girdles_var = document.forms["myForm"]["number_of_launching_girdles"].value;
-	var date_of_completion_of_launching = (spans_total_var - spans_already_casted_var)/((2*number_of_gls_units_var)+(5*number_of_launching_girdles_var));
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./index_files/stats.js"></script>
 
 
 
 
-    if ( pile_caps_total_var=="" || pile_caps_executed_var=="" || pile_caps_progress_pm_var=="") 
-    {
-        alert("Please fill Pile Caps Data");
-        return false;
-    }
-    else if (pile_total_var=="" || pile_executed_var=="" || pile_progress_pm_var=="") 
-    {
-        alert("Please fill Pile Data");
-        return false;
-    }
-    else if (piers_total_var=="" || piers_executed_var=="" || piers_progress_pm_var=="" || piers_shutter_var=="") 
-    {
-        alert("Please fill Piers Data");
-        return false;
-    }
-    else if (segments_total_var=="" || segments_casted_var=="" || segments_casting_beds_var=="" || segments_progress_pm_var=="") 
-    {
-        alert("Please fill Segments Data");
-        return false;
-    }
-    else
-    {
-      if(pile_caps_months_needed_var<(pile_months_needed_var+1))
-      {
-        pile_caps_months_needed_var=(pile_months_needed_var+1);
-      }
-      
-      if(piers_months_needed_practical_var<(pile_caps_months_needed_var+1))
-      {
-        piers_months_needed_practical_var=(pile_caps_months_needed_var+1);
-      }
+	<title>Ayush Gupta</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<meta name="keywords" content="Ayush,ag,Ayush Gupta,IITD,IIT Delhi,JEE,Nagpur,Dinanath,Resonance">
+	<meta name="description" content="Ayush gupta Home Page">
+	<link rel="stylesheet" type="text/css" href="./index_files/bootstrap.min.css">
+	<link rel="stylesheet" href="./index_files/bootstrap.css">
+	<link rel="icon" href="iitd_logo.jpg" type="image/x-icon">
+	<style type="text/css"></style><script async="" src="./index_files/analytics.js"></script><script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      var substructure_months_needed_var=piers_months_needed_practical_var;
-
-      if(date_of_completion_of_launching<(segments_months_needed_practical_var+1.5))
-      {
-        date_of_completion_of_launching=(segments_months_needed_practical_var+1.5);
-      }
-
-      var date_of_completion_of_project=date_of_completion_of_launching;
-      // alert("date_of_completion_of_project is initialized to be "+ date_of_completion_of_launching
-        // +"At this time Substructure completion is"+substructure_months_needed_show)
-
-      if(date_of_completion_of_project<(substructure_months_needed_var+1))
-      {
-        // alert("date of completion is less"+date_of_completion_of_project+" "+ substructure_months_needed_show);
-        date_of_completion_of_project=(substructure_months_needed_var+1);
-      }
-
-//     	alert("Months more needed for pile caps are : "+pile_caps_months_needed_var+"\n"+
-//     		"Months more needed for pile are : "+pile_months_needed_var+"\n"+
-//     		"Practical Months more needed for piers are : "+piers_months_needed_practical_var+"\n"+
-//     		"Theortical Months more needed for piers are : "+piers_months_needed_theortical_var+"\n"+
-//     		"Practical Months more needed for Segments are : "+segments_months_needed_practical_var+"\n"+
-//     		"Theortical Months more needed for Segments are : "+segments_months_needed_theortical_var);
-
-  		document.getElementById('results').setAttribute("style","display:block");
-    	document.getElementById('initial_headline').setAttribute("style","display:None");
-		  document.getElementById('initial_form').setAttribute("style","display:None");
-
-    var date = new Date();
-    var datetoprint_pile_months_needed_var=new Date(date.setTime( date.getTime() + pile_months_needed_var *30 * 86400000 ));
-
-    var date = new Date();
-    var datetoprint_pile_caps_months_needed_var=new Date(date.setTime( date.getTime() + pile_caps_months_needed_var *30 * 86400000 ));
-    
-    var date = new Date();
-    var datetoprint_piers_months_needed_practical_var=new Date(date.setTime( date.getTime() + piers_months_needed_practical_var *30 * 86400000 ));
-    
-    var date = new Date();
-    var datetoprint_substructure_months_needed_var=new Date(date.setTime( date.getTime() + substructure_months_needed_var *30 * 86400000 ));
-    
-    var date = new Date();
-    var datetoprint_segments_months_needed_practical_var=new Date(date.setTime( date.getTime() + segments_months_needed_practical_var *30 * 86400000 ));
-    
-    var date = new Date();
-    var datetoprint_date_of_completion_of_launching=new Date(date.setTime( date.getTime() + date_of_completion_of_launching *30 * 86400000 ));
-    
-    var date = new Date();
-    var datetoprint_date_of_completion_of_project=new Date(date.setTime( date.getTime() + date_of_completion_of_project *30 * 86400000 ));
-
-
-
-    var monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
-
-
-      document.getElementById("pile_months_needed_show").innerHTML = datetoprint_pile_months_needed_var.getDate()+' '+monthNames[datetoprint_pile_months_needed_var.getMonth()]+' '+datetoprint_pile_months_needed_var.getFullYear();
-      
-      document.getElementById("pile_caps_months_needed_show").innerHTML = datetoprint_pile_caps_months_needed_var.getDate()+' '+
-        monthNames[datetoprint_pile_caps_months_needed_var.getMonth()]+' '+
-        datetoprint_pile_caps_months_needed_var.getFullYear();
-
-      document.getElementById("piers_months_needed_show").innerHTML = datetoprint_piers_months_needed_practical_var.getDate()+' '+monthNames[datetoprint_piers_months_needed_practical_var.getMonth()]+' '+datetoprint_piers_months_needed_practical_var.getFullYear();
-      
-      document.getElementById("substructure_months_needed_show").innerHTML = datetoprint_substructure_months_needed_var.getDate()+' '+
-        monthNames[datetoprint_substructure_months_needed_var.getMonth()]+' '+
-        datetoprint_substructure_months_needed_var.getFullYear();
-      
-      document.getElementById("segments_months_needed_show").innerHTML = datetoprint_segments_months_needed_practical_var.getDate()+' '+
-        monthNames[datetoprint_segments_months_needed_practical_var.getMonth()]+' '+
-        datetoprint_segments_months_needed_practical_var.getFullYear();
-      
-      document.getElementById("launching_months_needed_show").innerHTML = datetoprint_date_of_completion_of_launching.getDate()+' '+
-        monthNames[datetoprint_date_of_completion_of_launching.getMonth()]+' '+
-        datetoprint_date_of_completion_of_launching.getFullYear();
-
-      document.getElementById("project_months_needed_show").innerHTML = datetoprint_date_of_completion_of_project.getDate()+' '+
-        monthNames[datetoprint_date_of_completion_of_project.getMonth()]+' '+
-        datetoprint_date_of_completion_of_project.getFullYear();
-
-
-
-
-
-    	// document.getElementById("pile_months_needed_show").innerHTML = pile_months_needed_var+'months';
-    	// document.getElementById("piers_months_needed_show").innerHTML = piers_months_needed_practical_var+'months';
-    	// document.getElementById("substructure_months_needed_show").innerHTML = piers_months_needed_practical_var+'months';
-    	// document.getElementById("segments_months_needed_show").innerHTML = segments_months_needed_practical_var+'months';
-    	// document.getElementById("project_months_needed_show").innerHTML = date_of_completion_of_launching+'months';
-    	// document.getElementById("launching_months_needed_show").innerHTML = date_of_completion_of_launching+'months';
-    	// document.getElementById("pile_caps_months_needed_show").innerHTML = pile_months_needed_var+'months';
-    	// alert('4');
-		return false;
-
-    }
-    
-}
-
-	// function show_results()
- //    {
- //    	document.getElementById('results').setAttribute("style","display:block");
- //    	// alert('3');
- //    	document.getElementById('initial_headline').setAttribute("style","display:None");
- //    	// alert('1');
-	// 	document.getElementById('initial_form').setAttribute("style","display:None");
-	// 	// alert('2');
- //    	document.getElementById("pile_months_needed_show").innerHTML = pile_months_needed_var+'months';
- //    	document.getElementById("piers_months_needed_show").innerHTML = piers_months_needed_var+'months';
- //    	document.getElementById("substructure_months_needed_show").innerHTML = piers_months_needed_var+'months';
- //    	document.getElementById("segments_months_needed_show").innerHTML = segments_months_needed_practical_var+'months';
- //    	document.getElementById("project_months_needed_show").innerHTML = date_of_completion_of_launching+'months';
- //    	document.getElementById("launching_months_needed_show").innerHTML = date_of_completion_of_launching+'months';
- //    	document.getElementById("pile_caps_months_needed_show").innerHTML = pile_months_needed_var+'months';
- //    	// alert('4');
- //    }
-
+	  ga('create', 'UA-64404592-2', 'auto');
+	  ga('send', 'pageview');
 </script>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<title>Metro Project</title>
-
+<script type="text/javascript" language="javascript">
+    function RunFile() {
+    WshShell = new ActiveXObject("WScript.Shell");
+    WshShell.Run("/Robot/robot", 1, false);
+    }
+</script>
 </head>
 
-<body onload="Run_on_start()">
-
- <div class="jumbotron" id ="initial_headline">
- <center>
-    <h1>Metro Project Details</h1>      
-    <p>Enter the Values Below to get an estimate of Project Completion.</p>
- </center>
- </div>
-
-<div id="initial_form">
-<form name="myForm" class="myForm_class" action="Some_Error" onsubmit="return validateForm()" method="post" >
-
-<div class="form-group">
-      <label >Total Number of Pile Caps to be executed:</label>
-      <input type=number step=any name="pile_caps_total" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Number of Pile Caps to be Already executed:</label>
-      <input type=number step=any name="pile_caps_executed" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Expected Progress of Pile Caps Per Month:</label>
-      <input type=number step=any name="pile_caps_progress_pm" class="form-control">
-</div>
 
 
-<!-- Total Number of Pile Caps to be executed: <input type=number step=any name="pile_caps_total">
-<br>
-Number of Pile Caps to be Already executed: <input type=number step=any name="pile_caps_executed">
-<br>
-Expected Progress of Pile Caps Per Month: <input type=number step=any name="pile_caps_progress_pm">
-<br> -->
 
 
-<div class="form-group">
-      <label >Total Number of Pile to be executed:</label>
-      <input type=number step=any name="pile_total" class="form-control">
-</div>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="index.html">Ayush Gupta</a>
+	    </div>
 
-<div class="form-group">
-      <label >Number of Pile to be Already executed: </label>
-      <input type=number step=any name="pile_executed" class="form-control">
-</div>
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+	      <ul class="nav navbar-nav">
+	        <li class="active" style="font-size:20px"><a href="./index_files/index.html">Home <span class="sr-only">(current)</span></a></li>
+	        <li style="font-size:20px"><a href="Academics.html">Academics</a></li>
+	        <li style="font-size:20px"><a href="Projects.html">Projects</a></li>
+	        <li style="font-size:20px"><a href="Resume.pdf" target="_blank">Resume</a></li>
+	        <li style="font-size:20px"><a href="Contact.html">Contact</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	<div class="container" style="padding-top:150px">
+		<div class="col-sm-4">
+			<img src="./index_files/Ayush_Gupta.jpg" width="304" class="img-responsive img-rounded" style="transform:rotate(-90deg);">
+		</div>
+		<div class="col-sm-8">
+			<h2>About Me</h2>
+			<hr style="height:2px;border:none;color:#333;background-color:#333;">
+			<p class="lead">Hi, I'm Ayush. I am a Junior Undergraduate pursuing my <br> Bachelors and Masters in <a href="http://www.cse.iitd.ernet.in/" target="_blank">Computer Science</a> at IIT Delhi.</br> 
+							<!-- Life here is full of fun and excitement.<br/>  -->
+							<!-- I am a Computer Science enthusiast as well as a enthusiastic programmer.  -->
+			</p>
+		</div>
+	</div>
 
-<div class="form-group" >
-      <label >Expected Progress of Pile Rigs Per Month:</label>
-      <input type=number step=any name="pile_rig_progress_pm" class="form-control">
-</div>
-
-<div class="form-group" >
-      <label >Number of Rigs:</label>
-      <input type=number step=any name="pile_rig_number" class="form-control">
-</div>
-
-<!-- 
-Total Number of Pile to be executed: <input type=number step=any name="pile_total">
-<br>
-Number of Pile to be Already executed: <input type=number step=any name="pile_executed">
-<br>
-Expected Progress of Pile Per Month: <input type=number step=any name="pile_progress_pm">
-<br> -->
-
-<div class="form-group">
-      <label >Total Number of Piers to be executed:</label>
-      <input type=number step=any name="piers_total" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Number of Piers to be Already executed:</label>
-      <input type=number step=any name="piers_executed" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Number of Piers Shutters available:</label>
-      <input type=number step=any name="piers_shutter" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Expected Progress of Piers Per Month:</label>
-      <input type=number step=any name="piers_progress_pm" class="form-control">
-</div>
-
-
-<!-- 
-Total Number of Piers to be executed: <input type=number step=any name="piers_total">
-<br>
-Number of Piers to be Already executed: <input type=number step=any name="piers_executed">
-<br>
-Number of Piers Shutters available: <input type=number step=any name="piers_shutter">
-<br>
-Expected Progress of Piers Per Month: <input type=number step=any name="piers_progress_pm">
-<br> -->
-
-
-<div class="form-group">
-      <label >Total Number of Segments to be casted:</label>
-      <input type=number step=any name="segments_total" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Number of Segments already casted:</label>
-      <input type=number step=any name="segments_casted" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Total Casting Beds:</label>
-      <input type=number step=any name="segments_casting_beds" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Expected Progress of Casting Segments:</label>
-      <input type=number step=any name="segments_progress_pm" class="form-control">
-</div>
-
-<!-- 
-Total Number of Segments to be casted: <input type=number step=any name="segments_total">
-<br>
-Number of Segments already casted: <input type=number step=any name="segments_casted">
-<br>
-Total Casting Beds: <input type=number step=any name="segments_casting_beds">
-<br>
-Expected Progress of Casting Segments: <input type=number step=any name="segments_progress_pm">
-<br> -->
-
-<div class="form-group">
-      <label >Total Number of Spans to be casted:</label>
-      <input type=number step=any name="spans_total" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Number of Spans already casted:</label>
-      <input type=number step=any name="spans_already_casted" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Number of GLS units:</label>
-      <input type=number step=any name="number_of_gls_units" class="form-control">
-</div>
-
-<div class="form-group">
-      <label >Number of Launching Girdles:</label>
-      <input type=number step=any name="number_of_launching_girdles" class="form-control">
-</div>
-
-
-<!-- 
-Total Number of Spans to be casted: <input type=number step=any name="spans_total">
-<br>
-Number of Spans already casted: <input type=number step=any name="spans_already_casted">
-<br>
-Number of GLS units: <input type=number step=any name="number_of_gls_units">
-<br>
-Number of Launching Girdles: <input type=number step=any name="number_of_launching_girdles">
-<br>
- -->
-
-<center>
-<input type="submit" class="btn btn-primary" value="Submit">
-</center>
-</form>
-
-</div>
-
-<div  id="results">
- <center>
-    <h1>Completion Estimate is Here!!</h1>
-    <h3>
-    Completion of Piles will happen around <p id="pile_months_needed_show"></p>
-    <br>
-    Completion of Piles Caps will happen around <p id="pile_caps_months_needed_show"></p>
-    <br>
-    Completion of Piers will happen around <p id="piers_months_needed_show"></p>
-    <br>
-    Completion of Substructure will happen around <p id="substructure_months_needed_show"></p>
-    <br>
-    Completion of Segment Casting will happen around <p id="segments_months_needed_show"></p>
-    <br>
-    Launching will happen around <p id="launching_months_needed_show"></p>
-    <br>
-    Project will complete around <p id="project_months_needed_show"></p>
-    <br>
-    </h3>
- </center>
- </div>
-
-
-</body>
-</html>
+</body></html>
